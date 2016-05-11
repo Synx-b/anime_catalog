@@ -1,0 +1,44 @@
+
+Anime_Catalog
+
+Overview:
+	This is an application that will act as a tracker for any anime watcher out there :D
+
+Features:
+	None
+
+Features to be Added:
+	UI:
+		Buttons:
+			Display All series
+			Show unfinished series
+			Show finshed series
+
+		Labels:
+			Identifier to whether or not a connection to the databse has been made
+
+		Menu Bar:
+			File:
+				Exit Application
+
+			Database:
+				Open Connection
+				Close Connection
+
+				Custom Scripts:
+					Execute Custom Scripts
+					Edit Custom Scripts
+
+	Database:
+		Create the Database to hold all of the necessary information for:
+			anime:
+				tbl_anime_watched
+				tbl_anime_details
+			usr:
+				tbl_user_credentials
+				tbl_user_information					
+		Create suitable relationships between these Tables as well
+
+	Logic:
+		Create login verification:
+			So the anime series displayed applies to there collection, not anyone elses
