@@ -1,0 +1,12 @@
+All notes that are to do with the database aspect of the application:
+
+Overview:
+	Anything that is created and stored within this directory will be to do with database structure and
+	how I connect and ultilse that within the application
+
+DB Connection Info:	
+	Server: sql8.freemysqlhosting.net
+	Name: sql8120800
+	Username: sql8120800
+	Password: wYrkTkd36M
+	Port: 3306

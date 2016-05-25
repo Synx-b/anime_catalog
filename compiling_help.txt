@@ -1,0 +1,76 @@
+Command Line Compiling
+
+This will tell you how to compile certain programming languages through the command line with no IDE
+
+Programming Language:
+	Description
+
+Python:
+	Python is one of the easy programming languages to use as it is very simple
+	Say we have a file called helloworld.py, inorder to compile this all we have to do is
+	For Python 2:
+		python helloworld.py
+	For Python 3:
+		python3 helloworld.py
+
+C:
+	For this you need to make sure that you have gcc installed on your system as that is the compiler for c programs
+	So inorder to compile a program file called helloworld.c
+	Firstly we compile it to an object file like this
+		gcc helloworld.c ((-o helloworld) add this part if you need to name the file something specific, in this case the compiled object file will be called helloworld
+							if this is not included then the object file will be called a)
+	Then all we have to do is call the object line through out command line like so
+		./helloworld
+	Then it will show the file output
+
+C++:
+	This is very similar to how you compile a C program but you need to the g++ compiler rather than gcc
+	File: helloworld.cpp
+	As before it compiles the file into an object file and then from there run the object files
+	Compiling
+		g++ helloworld.cpp ((-o helloworld) add this part if you need to name the file something specific, in this case the compiled object file will be called helloworld
+							if this is not included then the object file will be called a)
+	Running
+		./helloworld
+
+C#:
+	C# is a little more complicated as it can involve several different compiling enviroments such as normal, Gtk, WinForms but we will cover all of these
+	Note:
+		Inorder to do this on linux you need to make sure you have mono installed as that has all of the .net libarys and dlls for you to use, otherwise it just wouldn't work properly
+
+	Normal:
+		File: helloworld.cs
+		Compile:
+			mcs helloworld.cs
+		Run:
+			mono helloworld.exe
+
+	WinForms:
+		File: helloworld.case
+		Compile: 
+			mcs helloworld.cs -pkg:dotnet -lib:/usr/lib/mono/2.0
+		Run:
+			mono helloworld.exe	
+
+VB.Net:
+	This also requires mono to be installed as it requires the .net framework
+	File: helloworld.vb
+	Compile:
+		vbnc helloworld.vb
+	Run:
+		mono helloworld.exe
+
+NASM Assembly:
+	Before this you need to make sure you have the NASM assembler installed on your machine before you do anything
+	File: helloworld.nasm
+
+	First you need to compile it assinto a object file:
+		nasm-f elf helloworld.asm
+	Then you need to link it to an executable. Note this step is different depending on the system you have installed
+	32-bit(x86):
+		ld -s -o hello helloworld.o
+	64-bit(x86_64):
+		ld -m elf_i386 -s -o hello helloworld.o
+	In both of these cases the executable will be called hello
+	To execute your file you just:
+		./hello

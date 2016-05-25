@@ -1,0 +1,1 @@
+mcs -out:AnimeCatalog.exe -r:../../../Documents/System/OS/mysql/v2.0/MySql.Data.dll  -pkg:dotnet -lib:/usr/mono/2.0 ../src/*cs ../src/ui/*.cs ../src/database/*.cs
