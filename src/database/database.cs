@@ -25,10 +25,11 @@ namespace anime_catalog_application
         public MySqlDataReader database_reader;
         public MySqlConnection db_conn;
 
-        public bool _connect()   
+        public bool _connect(string server, string port, string uid, string pwd, string db_name)   
         {
             try
             {
+                string connection_string = "server=" + server + ";port=" + port + ";uid=" + uid+";pwd="+pwd+";database="+db_name+";"; 
                 db_conn = new MySqlConnection(connection_string);
                 db_conn.Open();
                 return true;
@@ -40,19 +41,21 @@ namespace anime_catalog_application
             }
         }
 
-        public void _close()
+        public bool _close()
         {
             try
             {
                 db_conn.Close();
+                return false;
             }
             catch(Exception ex)
             {
                 MessageBox.Show("Error: " +ex.Message, "Error");
+                return true;
             }
         }
 
-        public void load_database_into_listBox(System.Windows.Forms.ListBox lst_box)
+        public bool load_database_into_listBox(System.Windows.Forms.ListBox lst_box)
         {
             string sql_show_all = "select * from sql8120800.anime_data";
             MySqlCommand show_all = new MySqlCommand(sql_show_all, db_conn); 
@@ -61,10 +64,12 @@ namespace anime_catalog_application
             {
                 database_reader = show_all.ExecuteReader();
                 while(database_reader.Read()){ lst_box.Items.Add(database_reader["anime_name"]); }
+                return true;
             }
             catch(Exception ex)
             {
                 MessageBox.Show("Anime already Loaded into ListBox");
+                return false;
             }
         }
     }
