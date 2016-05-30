@@ -63,6 +63,11 @@ namespace anime_catalog_application
             else
             {
                 isConnected = _database._close(); 
+                if(lsb_anime_info.Items.Count > 0)
+                {
+                    lsb_anime_info.Items.Clear();
+                    anime_loaded = false;
+                }
             }
         }
 
