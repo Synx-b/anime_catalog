@@ -55,10 +55,10 @@ namespace anime_catalog_application
             }
         }
 
-        public bool load_database_into_listBox(System.Windows.Forms.ListBox lst_box)
+
+        public bool load_anime_from_database(System.Windows.Forms.ListBox lst_box, string sql_query)
         {
-            string sql_show_all = "select * from sql8120800.anime_data";
-            MySqlCommand show_all = new MySqlCommand(sql_show_all, db_conn); 
+            MySqlCommand show_all = new MySqlCommand(sql_query, db_conn); 
 
             try
             {
@@ -68,7 +68,7 @@ namespace anime_catalog_application
             }
             catch(Exception ex)
             {
-                MessageBox.Show("Anime already Loaded into ListBox");
+                MessageBox.Show("Error: " + ex.Message);
                 return false;
             }
         }
