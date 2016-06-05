@@ -142,6 +142,11 @@ namespace anime_catalog_application
                 MessageBox.Show("Anime already Loaded into ListBox!");
             }
         }
+
+        private void btn_open_connection_database_Click(object sender, System.EventArgs e)
+        {
+            this.quick_connect();
+        }
         
         private void btn_add_anime_series_Click(object sender, System.EventArgs e)
         {
