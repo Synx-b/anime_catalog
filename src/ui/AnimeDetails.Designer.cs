@@ -67,6 +67,21 @@ namespace anime_catalog_application
             this.lbl_anime_episode.Location = new System.Drawing.Point(9, 70);
             this.lbl_anime_episode.Size = new System.Drawing.Size(50, 20);
 
+            this.lbl_anime_favourite.AutoSize = true;
+            this.lbl_anime_favourite.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_anime_favourite.Text = "Anime Favourite: ";
+            this.lbl_anime_favourite.Name = "Whether or not the Anime is listed as a favouritet";
+            this.lbl_anime_favourite.Location = new System.Drawing.Point(9, 90);
+            this.lbl_anime_favourite.Size = new System.Drawing.Size(50, 20);
+
+            this.lbl_anime_finished.AutoSize = true;
+            this.lbl_anime_finished.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_anime_finished.Name = "Whether or not the anime is listed as finished";
+            this.lbl_anime_finished.Text = "Anime Finished: ";
+            this.lbl_anime_finished.Location = new System.Drawing.Point(9, 110);
+            this.lbl_anime_finished.Size = new System.Drawing.Size(50, 20);
+            
+
             // Code to control the GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -74,6 +89,8 @@ namespace anime_catalog_application
             this.Controls.Add(this.lbl_anime_details_title);
             this.Controls.Add(this.lbl_anime_name);
             this.Controls.Add(this.lbl_anime_episode);
+            this.Controls.Add(this.lbl_anime_favourite);
+            this.Controls.Add(this.lbl_anime_finished);
             this.Name = "Anime Details Loaded From Database";
             this.Text = "View Anime Details";
             this.ResumeLayout(false);

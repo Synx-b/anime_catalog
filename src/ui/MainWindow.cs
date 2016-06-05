@@ -22,6 +22,13 @@ namespace anime_catalog_application
         private Database _database = new Database();
         private bool isConnected = false;
         private bool anime_loaded = false;
+        private string query_show_all = "select * from sql8120800.anime_data";
+        private string query_show_unfinished = "select * from sql8120800.anime_data where anime_finished = 'NO'";  
+        private const int SORT_ALPH = 1;
+        private const int SORT_OLD_NEW = 2;
+        private const int SORT_NEW_OLD = 3;
+
+
 
 
         // Class Contructor    
@@ -91,6 +98,74 @@ namespace anime_catalog_application
             }
         }
 
+        private void load_all_anime()
+        {
+            this.reload_connection();
+            if(isConnected && !anime_loaded)
+            {
+                lsb_anime_info.Items.Clear();
+                anime_loaded = _database.load_anime_from_database(lsb_anime_info, this.query_show_all);
+            }
+            else if(isConnected && anime_loaded)
+            {
+                MessageBox.Show("Anime already Loaded into ListBox!");
+            }
+
+        }
+
+        private void load_unfinished_anime()
+        {
+            this.reload_connection();
+            if(isConnected && !anime_loaded)
+            {
+                lsb_anime_info.Items.Clear();
+                anime_loaded = _database.load_anime_from_database(lsb_anime_info, this.query_show_unfinished);
+            }
+            else if(isConnected && anime_loaded)
+            {
+                lsb_anime_info.Items.Clear();
+                 
+                anime_loaded = _database.load_anime_from_database(lsb_anime_info, this.query_show_unfinished);
+            }
+
+        }
+
+        private void sort_anime(System.Windows.Forms.ListBox lsb, int sort_ID)
+        {
+            if(lsb.Items.Count > 49)
+            {
+               switch(sort_ID)
+               {
+                    case SORT_ALPH:
+                        lsb.Sorted = true;
+                        this.reload_connection();
+                        this.load_all_anime();
+                        break;
+                    case SORT_OLD_NEW:
+                        lsb.Sorted = false;
+                        this.reload_connection();
+                        this.load_all_anime(); 
+                        break;
+               } 
+            }
+            else
+            {
+                switch(sort_ID)
+                {
+                    case SORT_ALPH:
+                        lsb.Sorted = true;
+                        this.reload_connection();
+                        this.load_unfinished_anime();
+                        break;
+                    case SORT_OLD_NEW:
+                        lsb.Sorted = false;
+                        this.reload_connection();
+                        this.load_unfinished_anime();
+                        break;
+                }
+            }
+        }
+
         // Window Widget Methods
         
         private void file_close_window(object sender, System.EventArgs e)
@@ -128,20 +203,34 @@ namespace anime_catalog_application
             this.show_anime_details();   
         }
 
-        private void btn_load_anime_series_Click(object sender, System.EventArgs e)
+        private void anime_sort_watched_old_new_ToolStripItem_Click(object sender, System.EventArgs e)
         {
-            this.reload_connection();
-            if(isConnected && !anime_loaded)
+            if(anime_loaded)
             {
-                lsb_anime_info.Items.Clear();
-                string show_all = "select * from sql8120800.anime_data";
-                anime_loaded = _database.load_anime_from_database(lsb_anime_info, show_all);
+                this.sort_anime(this.lsb_anime_info, SORT_OLD_NEW);
             }
-            else if(isConnected && anime_loaded)
+            else
             {
-                MessageBox.Show("Anime already Loaded into ListBox!");
+                MessageBox.Show("Anime not Loaded");
             }
         }
+
+        private void anime_sort_alph_ToolStripItem_Click(object sender, System.EventArgs e)
+        {
+            if(anime_loaded)
+            {
+                this.sort_anime(this.lsb_anime_info, SORT_ALPH);
+            }
+            else
+            {
+                MessageBox.Show("Anime not Loaded");
+            }
+        }
+
+        private void btn_load_anime_series_Click(object sender, System.EventArgs e)
+        {
+            this.load_all_anime();
+        } 
 
         private void btn_open_connection_database_Click(object sender, System.EventArgs e)
         {
@@ -153,21 +242,9 @@ namespace anime_catalog_application
             MessageBox.Show("Not yet Implemented");
         }
 
-        private void btn_show_unfinished_anime_series_Click(object sender  ,System.EventArgs e)
+        private void btn_show_unfinished_anime_series_Click(object sender, System.EventArgs e)
         {
-            this.reload_connection();
-            if(isConnected && !anime_loaded)
-            {
-                lsb_anime_info.Items.Clear();
-                string show_unfinished = "select * from sql8120800.anime_data where anime_finished = 'NO'"; 
-                anime_loaded = _database.load_anime_from_database(lsb_anime_info, show_unfinished);
-            }
-            else if(isConnected && anime_loaded)
-            {
-                lsb_anime_info.Items.Clear();
-                string show_unfinished = "select * from sql8120800 where anime_unfinished = 'NO'"; 
-                anime_loaded = _database.load_anime_from_database(lsb_anime_info, show_unfinished);
-            }
+            this.load_unfinished_anime();
         }
 
         private void btn_show_anime_details_Click(object sender, System.EventArgs e)

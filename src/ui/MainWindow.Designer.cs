@@ -52,6 +52,9 @@ namespace anime_catalog_application
             this.database_connectionCloseToolStripItem = new System.Windows.Forms.ToolStripMenuItem(); 
             this.anime_ToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anime_detailsToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.anime_sortToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.anime_sort_alph_ToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.anime_sort_watched_old_new_ToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.main_menu_strip.SuspendLayout();
             this.SuspendLayout();
 
@@ -109,7 +112,8 @@ namespace anime_catalog_application
 
             // Anime Menu Strip Item
             this.anime_ToolStripItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]{
-                    this.anime_detailsToolStripItem});
+                    this.anime_detailsToolStripItem,
+                    this.anime_sortToolStripItem});
             this.anime_ToolStripItem.Name = "Anime Strip Menu Item";
             this.anime_ToolStripItem.Size = new System.Drawing.Size(105, 60);
             this.anime_ToolStripItem.Text = "Anime";
@@ -119,6 +123,26 @@ namespace anime_catalog_application
             this.anime_detailsToolStripItem.Size = new System.Drawing.Size(150, 20);
             this.anime_detailsToolStripItem.Text = "Show Details";
             this.anime_detailsToolStripItem.Click += new System.EventHandler(this.anime_detailsToolStripItem_Click);
+
+            // Anime Sort Options Menu Strip Item
+            this.anime_sortToolStripItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]{
+                    this.anime_sort_alph_ToolStripItem,
+                    this.anime_sort_watched_old_new_ToolStripItem});
+            this.anime_sortToolStripItem.Name = "Sorting options for the Displayed Anime";
+            this.anime_sortToolStripItem.Text = "Sort Options";
+            this.anime_sortToolStripItem.Size = new System.Drawing.Size(150, 20);
+            
+            // Anime Sort by Alph Menu Strip Item
+            this.anime_sort_alph_ToolStripItem.Name = "Sort Anime by Aplh";
+            this.anime_sort_alph_ToolStripItem.Size = new System.Drawing.Size(150, 20);
+            this.anime_sort_alph_ToolStripItem.Text = "Alphabetical";
+            this.anime_sort_alph_ToolStripItem.Click += new System.EventHandler(this.anime_sort_alph_ToolStripItem_Click);
+
+            // Anime Sort by order Watched, Oldest to Newest
+            this.anime_sort_watched_old_new_ToolStripItem.Name = "Sort Anime by order they were watched in, Oldest to newest";
+            this.anime_sort_watched_old_new_ToolStripItem.Size = new System.Drawing.Size(150, 20);
+            this.anime_sort_watched_old_new_ToolStripItem.Text = "Oldest -> Newest";
+            this.anime_sort_watched_old_new_ToolStripItem.Click += new System.EventHandler(this.anime_sort_watched_old_new_ToolStripItem_Click);
                     
            
             // Window Title 
@@ -251,6 +275,9 @@ namespace anime_catalog_application
         private System.Windows.Forms.ToolStripMenuItem database_connectionCloseToolStripItem;
         private System.Windows.Forms.ToolStripMenuItem anime_ToolStripItem;
         private System.Windows.Forms.ToolStripMenuItem anime_detailsToolStripItem;
+        private System.Windows.Forms.ToolStripMenuItem anime_sortToolStripItem;
+        private System.Windows.Forms.ToolStripMenuItem anime_sort_watched_old_new_ToolStripItem;
+        private System.Windows.Forms.ToolStripMenuItem anime_sort_alph_ToolStripItem;
         private System.Windows.Forms.Button btn_load_anime_series;
         private System.Windows.Forms.Button btn_add_anime_series;
         private System.Windows.Forms.Button btn_show_unfinished_anime_series;
