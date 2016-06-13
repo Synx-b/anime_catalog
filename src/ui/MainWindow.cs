@@ -23,19 +23,16 @@ namespace anime_catalog_application
         private bool isConnected = false;
         private bool anime_loaded = false;
         private string query_show_all = "select * from sql8120800.anime_data";
-        private string query_show_unfinished = "select * from sql8120800.anime_data where anime_finished = 'NO'";  
+        private string query_show_unfinished = "select * from sql8120800.anime_data where anime_finished = 'NO'";
         private const int SORT_ALPH = 1;
         private const int SORT_OLD_NEW = 2;
         private const int SORT_NEW_OLD = 3;
 
-
-
-
-        // Class Contructor    
+        // Class Contructor
         public MainWindow()
         {
             InitializeComponent();
-        }   
+        }
 
         // Class Methods
         private void quick_connect()
@@ -44,10 +41,13 @@ namespace anime_catalog_application
             {
                 try
                 {
-                    isConnected = _database._connect("sql8.freemysqlhosting.net", "3306", "sql8120800", "wYrkTkd36M", "sql8120800");
-                    lbl_db_connection_status.Text = "Connected";
-                    lbl_db_connection_status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
- 
+                    isConnected = _database._connect();
+                    if(isConnected)
+                    {
+                        lbl_db_connection_status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+                        lbl_db_connection_status.Text = "Connected";
+                    }
+
                 }
                 catch(Exception ex)
                 {
@@ -58,12 +58,12 @@ namespace anime_catalog_application
 
         private void reload_connection()
         {
-            if(isConnected) 
+            if(isConnected)
             {
                 try
                 {
                     isConnected = _database._close();
-                    isConnected = _database._connect("sql8.freemysqlhosting.net", "3306", "sql8120800", "wYrkTkd36M", "sql8120800");
+                    isConnected = _database._connect();
                     anime_loaded = false;
                 }
                 catch (Exception ex)
@@ -79,6 +79,10 @@ namespace anime_catalog_application
 
         private void show_anime_details()
         {
+            string anime_name = "hello";
+            AnimeDetails _ad = new AnimeDetails(anime_name);
+            _ad.ShowDialog();
+            /*
             if(!anime_loaded)
             {
                 MessageBox.Show("Anime not Loaded!");
@@ -95,7 +99,7 @@ namespace anime_catalog_application
                 {
                     MessageBox.Show("No Anime Series Selected");
                 }
-            }
+            }*/
         }
 
         private void load_all_anime()
@@ -124,7 +128,6 @@ namespace anime_catalog_application
             else if(isConnected && anime_loaded)
             {
                 lsb_anime_info.Items.Clear();
-                 
                 anime_loaded = _database.load_anime_from_database(lsb_anime_info, this.query_show_unfinished);
             }
 
@@ -144,9 +147,9 @@ namespace anime_catalog_application
                     case SORT_OLD_NEW:
                         lsb.Sorted = false;
                         this.reload_connection();
-                        this.load_all_anime(); 
+                        this.load_all_anime();
                         break;
-               } 
+               }
             }
             else
             {
@@ -167,7 +170,7 @@ namespace anime_catalog_application
         }
 
         // Window Widget Methods
-        
+
         private void file_close_window(object sender, System.EventArgs e)
         {
             // Close the Window
@@ -176,7 +179,7 @@ namespace anime_catalog_application
 
         private void database_connectionOpenToolStripItem_Click(object sender, System.EventArgs e)
         {
-           this.quick_connect(); 
+           this.quick_connect();
         }
 
         private void database_connectionCloseToolStripItem_Click(object sender, System.EventArgs e)
@@ -187,20 +190,20 @@ namespace anime_catalog_application
             }
             else
             {
-                isConnected = _database._close(); 
+                isConnected = _database._close();
                 if(lsb_anime_info.Items.Count > 0)
                 {
                     lsb_anime_info.Items.Clear();
                     anime_loaded = false;
                 }
-                lbl_db_connection_status.Text = "No Connection"; 
+                lbl_db_connection_status.Text = "No Connection";
                 lbl_db_connection_status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             }
         }
 
         private void anime_detailsToolStripItem_Click(object sender, System.EventArgs e)
         {
-            this.show_anime_details();   
+            this.show_anime_details();
         }
 
         private void anime_sort_watched_old_new_ToolStripItem_Click(object sender, System.EventArgs e)
@@ -230,13 +233,13 @@ namespace anime_catalog_application
         private void btn_load_anime_series_Click(object sender, System.EventArgs e)
         {
             this.load_all_anime();
-        } 
+        }
 
         private void btn_open_connection_database_Click(object sender, System.EventArgs e)
         {
             this.quick_connect();
         }
-        
+
         private void btn_add_anime_series_Click(object sender, System.EventArgs e)
         {
             MessageBox.Show("Not yet Implemented");
@@ -251,11 +254,10 @@ namespace anime_catalog_application
         {
             this.show_anime_details();
         }
-        
+
         private void btn_exit_Click(object sender, System.EventArgs e)
         {
             base.Close();
         }
-    } 
+    }
 }
-

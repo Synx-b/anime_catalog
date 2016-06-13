@@ -1,6 +1,6 @@
 /***********************************************
  * UI to Edit and View the Details of the
- * selected anime series from the database 
+ * selected anime series from the database
  * $AUTHOR: Jacob Powell
  * $DATE: 21/05/2016
  * *********************************************/
@@ -13,13 +13,19 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace anime_catalog_application
 {
     public partial class AnimeDetails : Form
     {
-        string anime_id;
-        Database _database = new Database();
+        private string anime_id;
+        private Database _database = new Database();
+        private string anime_name;
+        private string anime_episode;
+        private string anime_series;
+        private string anime_favourite;
+        private string anime_finished;
 
         public AnimeDetails(string anime_name)
         {

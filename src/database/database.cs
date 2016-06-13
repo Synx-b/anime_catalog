@@ -20,16 +20,15 @@ namespace anime_catalog_application
 {
     public class Database
     {
-        
+
         public string connection_string = "server=sql8.freemysqlhosting.net;port=3306;uid=sql8120800;pwd=wYrkTkd36M;database=sql8120800;";
         public MySqlDataReader database_reader;
         public MySqlConnection db_conn;
 
-        public bool _connect(string server, string port, string uid, string pwd, string db_name)   
+        public bool _connect()
         {
             try
             {
-                string connection_string = "server=" + server + ";port=" + port + ";uid=" + uid+";pwd="+pwd+";database="+db_name+";"; 
                 db_conn = new MySqlConnection(connection_string);
                 db_conn.Open();
                 return true;
@@ -58,7 +57,7 @@ namespace anime_catalog_application
 
         public bool load_anime_from_database(System.Windows.Forms.ListBox lst_box, string sql_query)
         {
-            MySqlCommand show_all = new MySqlCommand(sql_query, db_conn); 
+            MySqlCommand show_all = new MySqlCommand(sql_query, db_conn);
 
             try
             {
@@ -72,7 +71,9 @@ namespace anime_catalog_application
                 return false;
             }
         }
+
+        public void load_anime_details(string anime_id)
+        {
+        }
     }
 }
-
-
