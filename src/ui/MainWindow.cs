@@ -19,7 +19,8 @@ namespace anime_catalog_application
     public partial class MainWindow : Form
     {
         // Private Class Members
-        private Database _database = new Database();
+        private DatabaseCore _database_core = new DatabaseCore();
+        private DatabaseUtil _database_util = new DatabaseUtil();
         private bool isConnected = false;
         private bool anime_loaded = false;
         private string query_show_all = "select * from sql8120800.anime_data";
@@ -41,7 +42,7 @@ namespace anime_catalog_application
             {
                 try
                 {
-                    isConnected = _database._connect();
+                    isConnected = _database_core._connect();
                     if(isConnected)
                     {
                         lbl_db_connection_status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
@@ -62,8 +63,8 @@ namespace anime_catalog_application
             {
                 try
                 {
-                    isConnected = _database._close();
-                    isConnected = _database._connect();
+                    isConnected = _database_core._close();
+                    isConnected = _database_core._connect();
                     anime_loaded = false;
                 }
                 catch (Exception ex)
@@ -104,7 +105,7 @@ namespace anime_catalog_application
             if(isConnected && !anime_loaded)
             {
                 lsb_anime_info.Items.Clear();
-                anime_loaded = _database.load_anime_from_database(lsb_anime_info, this.query_show_all);
+                anime_loaded = _database_util.load_anime_from_database(_database_core.db_conn, _database_core.database_reader, lsb_anime_info, this.query_show_all);
             }
             else if(isConnected && anime_loaded)
             {
@@ -119,12 +120,12 @@ namespace anime_catalog_application
             if(isConnected && !anime_loaded)
             {
                 lsb_anime_info.Items.Clear();
-                anime_loaded = _database.load_anime_from_database(lsb_anime_info, this.query_show_unfinished);
+                anime_loaded = _database_util.load_anime_from_database(_database_core.db_conn, _database_core.database_reader, lsb_anime_info, this.query_show_unfinished);
             }
             else if(isConnected && anime_loaded)
             {
                 lsb_anime_info.Items.Clear();
-                anime_loaded = _database.load_anime_from_database(lsb_anime_info, this.query_show_unfinished);
+                anime_loaded = _database_util.load_anime_from_database(_database_core.db_conn, _database_core.database_reader, lsb_anime_info, this.query_show_unfinished);
             }
 
         }
@@ -186,7 +187,7 @@ namespace anime_catalog_application
             }
             else
             {
-                isConnected = _database._close();
+                isConnected = _database_core._close();
                 if(lsb_anime_info.Items.Count > 0)
                 {
                     lsb_anime_info.Items.Clear();

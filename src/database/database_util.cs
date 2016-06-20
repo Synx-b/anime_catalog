@@ -1,7 +1,6 @@
 
 /***********************************************
- * User inferface for the anime catalog program
- * designed from scratch
+ * Database Functionality for ListBox's
  * $AUTHOR: Jacob Powell
  * $DATE: 21/05/2016
  * *********************************************/
@@ -18,44 +17,9 @@ using MySql.Data.MySqlClient;
 
 namespace anime_catalog_application
 {
-    public class Database
+    public class DatabaseUtil
     {
-
-        public string connection_string = "server=sql8.freemysqlhosting.net;port=3306;uid=sql8120800;pwd=wYrkTkd36M;database=sql8120800;";
-        public MySqlDataReader database_reader;
-        public MySqlConnection db_conn;
-
-        public bool _connect()
-        {
-            try
-            {
-                db_conn = new MySqlConnection(connection_string);
-                db_conn.Open();
-                return true;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message, "Error");
-                return false;
-            }
-        }
-
-        public bool _close()
-        {
-            try
-            {
-                db_conn.Close();
-                return false;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show("Error: " +ex.Message, "Error");
-                return true;
-            }
-        }
-
-
-        public bool load_anime_from_database(System.Windows.Forms.ListBox lst_box, string sql_query)
+        public bool load_anime_from_database(MySqlConnection db_conn, MySqlDataReader database_reader, System.Windows.Forms.ListBox lst_box, string sql_query)
         {
             MySqlCommand show_all = new MySqlCommand(sql_query, db_conn);
 
@@ -72,7 +36,7 @@ namespace anime_catalog_application
             }
         }
 
-        public List<string> load_anime_details(List<string> anime_dt, string anime_id)
+        public List<string> load_anime_details(MySqlConnection db_conn, MySqlDataReader database_reader, List<string> anime_dt, string anime_id)
         {
             string sql_get_details = "select * from sql8120800.anime_data where anime_name = '" + anime_id + "'";
             MySqlCommand get_details = new MySqlCommand(sql_get_details, db_conn);
@@ -93,6 +57,11 @@ namespace anime_catalog_application
                 MessageBox.Show(ex.Message);
                 return anime_dt;
             }
+        }
+
+        public void add_anime_series(MySqlConnection db_conn, MySqlDataReader database_reader, string anime_name, string anime_episode, string anime_epiosde)
+        {
+            string sql_query_add = "";
         }
     }
 }

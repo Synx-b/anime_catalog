@@ -40,8 +40,8 @@ namespace anime_catalog_application
             this.btn_load_anime_series = new System.Windows.Forms.Button();
             this.btn_add_anime_series = new System.Windows.Forms.Button();
             this.btn_show_unfinished_anime_series = new System.Windows.Forms.Button();
-            this.btn_exit = new System.Windows.Forms.Button();
             this.btn_show_anime_details = new System.Windows.Forms.Button();
+            this.btn_exit = new System.Windows.Forms.Button();
             this.btn_open_connection_database = new System.Windows.Forms.Button();
             this.main_menu_strip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();

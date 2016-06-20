@@ -20,7 +20,8 @@ namespace anime_catalog_application
     public partial class AnimeDetails : Form
     {
         private string anime_id;
-        private Database _database = new Database();
+        private DatabaseCore _database_core = new DatabaseCore();
+        private DatabaseUtil _database_util = new DatabaseUtil();
         private List<string> anime_details = new List<string>();
         private bool conn = false;
 
@@ -35,8 +36,8 @@ namespace anime_catalog_application
         {
             try
             {
-                conn = _database._connect();
-                anime_details = _database.load_anime_details(anime_details, anime_id);
+                conn = _database_core._connect();
+                anime_details = _database_util.load_anime_details(_database_core.db_conn, _database_core.database_reader,anime_details, anime_id);
 
                 // Add the Anime Details
                 lbl_anime_name_dep.Text = anime_details[0];
