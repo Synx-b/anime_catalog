@@ -79,10 +79,6 @@ namespace anime_catalog_application
 
         private void show_anime_details()
         {
-            string anime_name = "hello";
-            AnimeDetails _ad = new AnimeDetails(anime_name);
-            _ad.ShowDialog();
-            /*
             if(!anime_loaded)
             {
                 MessageBox.Show("Anime not Loaded!");
@@ -99,7 +95,7 @@ namespace anime_catalog_application
                 {
                     MessageBox.Show("No Anime Series Selected");
                 }
-            }*/
+            }
         }
 
         private void load_all_anime()

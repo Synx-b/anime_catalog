@@ -109,8 +109,6 @@ namespace anime_catalog_application
             this.lbl_anime_finished_dep.Location = new System.Drawing.Point(135, 110);
             this.lbl_anime_finished_dep.Size = new System.Drawing.Size(50, 20);
 
-
-
             // Code to control the GUI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

@@ -72,8 +72,27 @@ namespace anime_catalog_application
             }
         }
 
-        public void load_anime_details(string anime_id)
+        public List<string> load_anime_details(List<string> anime_dt, string anime_id)
         {
+            string sql_get_details = "select * from sql8120800.anime_data where anime_name = '" + anime_id + "'";
+            MySqlCommand get_details = new MySqlCommand(sql_get_details, db_conn);
+            try
+            {
+                database_reader = get_details.ExecuteReader();
+                while(database_reader.Read())
+                {
+                    anime_dt.Add(database_reader["anime_name"].ToString());
+                    anime_dt.Add(database_reader["anime_episode"].ToString());
+                    anime_dt.Add(database_reader["anime_favourite"].ToString());
+                    anime_dt.Add(database_reader["anime_finished"].ToString());
+                }
+                return anime_dt;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return anime_dt;
+            }
         }
     }
 }

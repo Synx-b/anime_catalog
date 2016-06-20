@@ -20,7 +20,7 @@ namespace anime_catalog_application
     {
 
         private System.ComponentModel.IContainer components = null;
-        
+
         protected override void Dispose(bool disposing)
         {
             if(disposing && (components != null))
@@ -29,11 +29,11 @@ namespace anime_catalog_application
             }
             base.Dispose(disposing);
         }
-        
+
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-            this.lbl_title = new System.Windows.Forms.Label();        
+            this.lbl_title = new System.Windows.Forms.Label();
             this.lbl_db_connection_info = new System.Windows.Forms.Label();
             this.lbl_db_connection_status = new System.Windows.Forms.Label();
             this.lsb_anime_info = new System.Windows.Forms.ListBox();
@@ -49,7 +49,7 @@ namespace anime_catalog_application
             this.database_ToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.database_connectionToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.database_connectionOpenToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.database_connectionCloseToolStripItem = new System.Windows.Forms.ToolStripMenuItem(); 
+            this.database_connectionCloseToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anime_ToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anime_detailsToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
             this.anime_sortToolStripItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -97,7 +97,7 @@ namespace anime_catalog_application
             this.database_connectionToolStripItem.Name = "Connection(Database)";
             this.database_connectionToolStripItem.Size = new System.Drawing.Size(150, 22);
             this.database_connectionToolStripItem.Text = "Connections";
-            
+
             // Open connection to the databse Menu Item
             this.database_connectionOpenToolStripItem.Name = "Open Connection To Database";
             this.database_connectionOpenToolStripItem.Size = new System.Drawing.Size(150, 22);
@@ -117,7 +117,7 @@ namespace anime_catalog_application
             this.anime_ToolStripItem.Name = "Anime Strip Menu Item";
             this.anime_ToolStripItem.Size = new System.Drawing.Size(105, 60);
             this.anime_ToolStripItem.Text = "Anime";
-            
+
             // Anime Details Menu Strip Item
             this.anime_detailsToolStripItem.Name = "Show Details of the Selected Anime Series";
             this.anime_detailsToolStripItem.Size = new System.Drawing.Size(150, 20);
@@ -131,7 +131,7 @@ namespace anime_catalog_application
             this.anime_sortToolStripItem.Name = "Sorting options for the Displayed Anime";
             this.anime_sortToolStripItem.Text = "Sort Options";
             this.anime_sortToolStripItem.Size = new System.Drawing.Size(150, 20);
-            
+
             // Anime Sort by Alph Menu Strip Item
             this.anime_sort_alph_ToolStripItem.Name = "Sort Anime by Aplh";
             this.anime_sort_alph_ToolStripItem.Size = new System.Drawing.Size(150, 20);
@@ -143,21 +143,21 @@ namespace anime_catalog_application
             this.anime_sort_watched_old_new_ToolStripItem.Size = new System.Drawing.Size(150, 20);
             this.anime_sort_watched_old_new_ToolStripItem.Text = "Oldest -> Newest";
             this.anime_sort_watched_old_new_ToolStripItem.Click += new System.EventHandler(this.anime_sort_watched_old_new_ToolStripItem_Click);
-                    
-           
-            // Window Title 
+
+
+            // Window Title
             this.lbl_title.AutoSize = true;
-            this.lbl_title.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_title.Font = new System.Drawing.Font("Lucida Console", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_title.Location = new System.Drawing.Point(9, 25);
-            this.lbl_title.Name = "MainWindow Title"; 
+            this.lbl_title.Name = "MainWindow Title";
             this.lbl_title.Size = new System.Drawing.Size(150, 21);
             this.lbl_title.Text = "Anime Catalog";
 
-            
+
             // Button to lead contents of database into list box
             this.btn_load_anime_series.AutoSize = true;
-            this.btn_load_anime_series.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_load_anime_series.Location = new System.Drawing.Point(412, 45); 
+            this.btn_load_anime_series.Font = new System.Drawing.Font("Lucida Console", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_load_anime_series.Location = new System.Drawing.Point(412, 45);
             this.btn_load_anime_series.Name = "Button For Loading Contents Into ListBox";
             this.btn_load_anime_series.Text = "Load Anime";
             this.btn_load_anime_series.Size = new System.Drawing.Size(160, 20);
@@ -165,7 +165,7 @@ namespace anime_catalog_application
 
             // Button to add an anime series to the database
             this.btn_add_anime_series.AutoSize = true;
-            this.btn_add_anime_series.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0))); 
+            this.btn_add_anime_series.Font = new System.Drawing.Font("Lucida Console", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add_anime_series.Location = new System.Drawing.Point(412, 75);
             this.btn_add_anime_series.Name = "Button to add a new anime series into the database";
             this.btn_add_anime_series.Text = "Add Anime Series";
@@ -183,7 +183,7 @@ namespace anime_catalog_application
 
             // Button to Show the details of the Anime Selected
             this.btn_show_anime_details.AutoSize = true;
-            this.btn_show_anime_details.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_show_anime_details.Font = new System.Drawing.Font("Lucida Console", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_show_anime_details.Size = new System.Drawing.Size(160, 20);
             this.btn_show_anime_details.Location = new System.Drawing.Point(412, 135);
             this.btn_show_anime_details.Name = "Button to Show details of Selected Anime Series";
@@ -192,7 +192,7 @@ namespace anime_catalog_application
 
             // Button to Exit the Form
             this.btn_exit.AutoSize = true;
-            this.btn_exit.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_exit.Font = new System.Drawing.Font("Lucida Console", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_exit.Size = new System.Drawing.Size(160, 20);
             this.btn_exit.Location = new System.Drawing.Point(580, 45);
             this.btn_exit.Name = "Button to Exit the Form";
@@ -201,17 +201,17 @@ namespace anime_catalog_application
 
             // Button to Connect to the Database
             this.btn_open_connection_database.AutoSize = true;
-            this.btn_open_connection_database.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_open_connection_database.Font = new System.Drawing.Font("Lucida Console", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_open_connection_database.Location = new System.Drawing.Point(580, 75);
             this.btn_open_connection_database.Size = new System.Drawing.Size(160, 20);
             this.btn_open_connection_database.Name = "Button to Open the Connection to the Database";
             this.btn_open_connection_database.Text = "Open Connection";
-            this.btn_open_connection_database.Click += new System.EventHandler(this.btn_open_connection_database_Click); 
-            
+            this.btn_open_connection_database.Click += new System.EventHandler(this.btn_open_connection_database_Click);
+
 
             // Database Connection Info
             this.lbl_db_connection_info.AutoSize = true;
-            this.lbl_db_connection_info.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_db_connection_info.Font = new System.Drawing.Font("Lucida Console", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_db_connection_info.Location = new System.Drawing.Point(150, 25);
             this.lbl_db_connection_info.Name = "Database Connection Info";
             this.lbl_db_connection_info.Size = new System.Drawing.Size(50, 21);
@@ -219,7 +219,7 @@ namespace anime_catalog_application
 
             // Database Connection Status
             this.lbl_db_connection_status.AutoSize = true;
-            this.lbl_db_connection_status.Font = new System.Drawing.Font("Lucida Console", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_db_connection_status.Font = new System.Drawing.Font("Lucida Console", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_db_connection_status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lbl_db_connection_status.Location = new System.Drawing.Point(340, 25);
             this.lbl_db_connection_status.Name = "Database Connection Status";
@@ -233,7 +233,7 @@ namespace anime_catalog_application
             this.lsb_anime_info.Location = new System.Drawing.Point(9, 45);
             this.lsb_anime_info.Name = "Anime Information Box";
             this.lsb_anime_info.Size = new System.Drawing.Size(400, 500);
-            this.lsb_anime_info.TabIndex = 5; 
+            this.lsb_anime_info.TabIndex = 5;
             this.lsb_anime_info.Sorted = true;
 
             // MainWindow
@@ -258,7 +258,7 @@ namespace anime_catalog_application
             this.main_menu_strip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-        
+
         }
 
         // Window Widget Declarations

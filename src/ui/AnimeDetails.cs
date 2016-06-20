@@ -21,11 +21,8 @@ namespace anime_catalog_application
     {
         private string anime_id;
         private Database _database = new Database();
-        private string anime_name;
-        private string anime_episode;
-        private string anime_series;
-        private string anime_favourite;
-        private string anime_finished;
+        private List<string> anime_details = new List<string>();
+        private bool conn = false;
 
         public AnimeDetails(string anime_name)
         {
@@ -36,6 +33,21 @@ namespace anime_catalog_application
 
         private void load_anime_details(string anime_id)
         {
+            try
+            {
+                conn = _database._connect();
+                anime_details = _database.load_anime_details(anime_details, anime_id);
+
+                // Add the Anime Details
+                lbl_anime_name_dep.Text = anime_details[0];
+                lbl_anime_episode_dep.Text = anime_details[1];
+                lbl_anime_favourite_dep.Text = anime_details[2];
+                lbl_anime_finished_dep.Text = anime_details[3];
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
